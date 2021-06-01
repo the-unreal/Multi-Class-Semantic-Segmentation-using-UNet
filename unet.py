@@ -45,6 +45,8 @@ def unet(height, width, channels, n_class, n_filters=16):
   exp_path4 = Concatenate()([exp_path4, conv1])
   exp_path4 = down_conv(exp_path4, n_filters, size = (3,3))
 
+  print(exp_path4.shape)
+
   # Output
   """output = Conv2D(n_class, kernel_size = (1,1), activation = 'softmax')(exp_path4)
   model = Model(inputs = input_layer, outputs = output)
