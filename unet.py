@@ -7,6 +7,7 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator, load_img, i
 import cv2
 from google.colab.patches import cv2_imshow
 import PIL
+from contextlib import redirect_stdout
 
 def down_conv(tensor, n_filters, size, pool = True, padding = 'same', initializer = 'he_normal'):
   x = Conv2D(n_filters, kernel_size = size, padding = padding, activation = 'relu', kernel_initializer = initializer)(tensor)
@@ -45,13 +46,14 @@ def unet(height, width, channels, n_class, n_filters=16):
   exp_path4 = Concatenate()([exp_path4, conv1])
   exp_path4 = down_conv(exp_path4, n_filters, size = (3,3))
 
-  print(exp_path4.shape)
-
   # Output
-  """output = Conv2D(n_class, kernel_size = (1,1), activation = 'softmax')(exp_path4)
+  output = Conv2D(n_class, kernel_size = (1,1), activation = 'softmax')(exp_path4)
   model = Model(inputs = input_layer, outputs = output)
 
-  return model"""
+  return model
 
 if __name__ == "__main__":
-  unet(256, 256, 3, 10)
+  model = unet(256, 256, 3, 10)
+  with open('modelsummary.txt', 'w') as f:
+    with redirect_stdout(f):
+      model.summary()
