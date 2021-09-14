@@ -3,7 +3,7 @@ import os
 from PIL import Image
 
 if __name__ == "__main__":
-  path = '/content/data'
+  path = '/content/dataset-iiit-pet'
   count = 0
   count_except = 0
   count_try = 0
@@ -20,16 +20,18 @@ if __name__ == "__main__":
         """mask_path = os.path.join(path, 'annotations/trimaps')
         print('Image: ', os.path.exists(os.path.join(image_path, filename)))
         print('Mask: ', os.path.exists(os.path.join(mask_path, filename)))
-        ""os.remove(os.path.join(image_path, filename))
-        os.remove(os.path.join(mask_path, filename))"""
+        """
     else:
       print("inside else")
       x.append(filename)
       count = count + 1
-      """image_path = os.path.join(path, 'images')
+      
+      """image_path = os.path.join(path, 'images')"""
       mask_path = os.path.join(path, 'annotations/trimaps')
-      print('Image: ', os.path.exists(os.path.join(image_path, filename)))
-      print('Mask: ', os.path.exists(os.path.join(mask_path, filename)))"""
+      """os.remove(os.path.join(image_path, filename))
+      os.remove(os.path.join(mask_path, filename))"""
+      print('Mask: ', os.path.join(mask_path, filename))
+  
   print(count)
   print("try: ", count_try)
   print("except: ", count_except)
