@@ -71,7 +71,7 @@ def preprocess(x, y):
 
 
 if __name__ == "__main__":
-  path = "data/"
+  path = "/content/dataset-iiit-pet/"
   (train_x, train_y), (valid_x, valid_y), (test_x, test_y) = load_data(path)
   print(f"Dataset: Train: {len(train_x)} - Valid: {len(valid_x)} - Test: {len(test_x)}")
 
